@@ -19,7 +19,7 @@ body,
 }
 
 #router {
-  padding: 0px;
+  padding: 0;
   display: flex;
   flex-direction: column;
   flex: 1;
