@@ -1,18 +1,14 @@
-import React, { Component } from 'react'
-import './App.css'
+import React from 'react'
+import { Router } from "@reach/router"
 
 // Import components
 import Home from './components/Home'
 
-class App extends Component {
-  render() {
+import './styles/normalize.css'
 
-    return (
-      <div className="App">
-        <Home />
-      </div>
-    );
-  }
-}
+const App = () =>
+  <Router id="router">
+    <Home path="/" />
+  </Router>
 
 export default App
