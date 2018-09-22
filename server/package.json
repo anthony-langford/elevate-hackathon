@@ -1,0 +1,30 @@
+{
+  "name": "elevate-server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "engines": {
+    "node": "8.x.x"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js",
+    "start-dev": "nodemon server.js",
+    "local": "./node_modules/.bin/nodemon --ignore public/",
+    "knex": "./node_modules/.bin/knex"
+  },
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "cors": "^2.8.4",
+    "dotenv": "^6.0.0",
+    "express": "^4.16.3",
+    "knex": "^0.15.2",
+    "knex-logger": "^0.1.0",
+    "morgan": "^1.9.1",
+    "pg": "^7.4.3"
+  },
+  "devDependencies": {
+    "nodemon": "^1.18.4"
+  }
+}
