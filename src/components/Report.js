@@ -1,19 +1,20 @@
-import React from 'react'
-import styled from 'styled-components'
+import React from 'react';
+import styled from 'styled-components';
 
 // JSON.results
 
-import Form from './Form'
+import Form from './Form';
 
 export default class Report extends React.Component {
 
   constructor(props) {
-    super(props)
+    super(props);
+
     this.state = {
       form: {
         name: "kdsljf"
       }
-    }
+    };
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -35,6 +36,6 @@ export default class Report extends React.Component {
       <React.Fragment>
         <Form handleChange={this.handleChange} handleSubmit={this.handleSubmit} />
       </React.Fragment>
-    )
-  }
-}
+    );
+  };
+};

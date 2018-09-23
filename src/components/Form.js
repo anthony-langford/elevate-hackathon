@@ -1,5 +1,5 @@
-import React from 'react'
-import { Form } from 'semantic-ui-react'
+import React from 'react';
+import { Form } from 'semantic-ui-react';
 
 export default () => (
   <Form>
@@ -8,4 +8,4 @@ export default () => (
       <input />
     </Form.Field>
   </Form>
-)
+);
