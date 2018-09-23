@@ -38,7 +38,7 @@ export default class Home extends React.Component {
   }
 
   componentDidMount() {
-    // axios.get(`https://jsonplaceholder.typicode.com/users`)
+    // axios.get(`http://elevate-alphas.herokuapp.com/api/report/all`)
     //   .then(res => {
     //     const persons = res.data;
     //     this.setState({ persons });
@@ -46,7 +46,7 @@ export default class Home extends React.Component {
   }
 
   onClick = (id) => {
-    navigate(`/issue/${id}`)
+    navigate(`/details`)
   }
 
   render() {
