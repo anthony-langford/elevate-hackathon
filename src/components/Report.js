@@ -33,7 +33,7 @@ export default class Report extends React.Component {
 
     return (
       <React.Fragment>
-        <Form handleChange={handleChange} handleSubmit={handleSubmit} />
+        <Form handleChange={this.handleChange} handleSubmit={this.handleSubmit} />
       </React.Fragment>
     )
   }
