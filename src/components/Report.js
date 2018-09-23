@@ -1,9 +1,9 @@
 import React from 'react';
-import styled from 'styled-components';
+import { Button, Form } from 'semantic-ui-react'
 
 // JSON.results
 
-import Form from './Form';
+// import Form from './Form';
 
 export default class Report extends React.Component {
 
@@ -12,7 +12,7 @@ export default class Report extends React.Component {
 
     this.state = {
       form: {
-        name: "kdsljf"
+        name: "hi"
       }
     };
 
@@ -34,7 +34,17 @@ export default class Report extends React.Component {
 
     return (
       <React.Fragment>
-        <Form handleChange={this.handleChange} handleSubmit={this.handleSubmit} />
+        <Form>
+          <Form.Field>
+            <label>First Name</label>
+            <input placeholder='First Name' />
+          </Form.Field>
+          <Form.Field>
+            <label>Last Name</label>
+            <input placeholder='Last Name' />
+          </Form.Field>
+          <Button type='submit'>Submit</Button>
+        </Form>
       </React.Fragment>
     );
   };
