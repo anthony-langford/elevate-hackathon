@@ -1,8 +1,32 @@
 'use strict';
 const express = require('express');
 const reportApi = express.Router();
+const aws = require('aws-sdk');
+const multer = require('multer');
+const multerS3 = require('multer-s3');
+const s3 = new aws.S3();
 
 module.exports = (knex) => {
+
+  aws.config.update({
+    secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
+    accessKeyId:  process.env.AWS_SECRET_ACCESS_KEY_ID,
+    region:  process.env.AWS_REGION
+  });
+
+  const upload = multer({
+    storage: multerS3({
+        s3: s3,
+        acl: 'public-read',
+        bucket: 'elevate-bucket',
+        metadata: function (req, file, cb) {
+          cb(null, {fieldName: file.fieldname});
+        },
+        key: function (req, file, cb) {
+          cb(null, `${Date.now().toString()}${file.originalname}`)
+        }
+    })
+  });
 
   reportApi.get('/all', (req, res) => {
     knex('reports')
@@ -32,7 +56,7 @@ module.exports = (knex) => {
       });
   });
 
-  reportApi.post('/new', (req, res) => {
+  reportApi.post('/new', upload.single('file'), (req, res) => {
     let { latitude, longitude, description, safety_hazard, category, citizen_id, neighbourhood_id } = req.body;
 
     if (!latitude || !longitude || !description || !category || !citizen_id || !neighbourhood_id) {
@@ -46,7 +70,7 @@ module.exports = (knex) => {
         .insert({
             latitude,
             longitude,
-            image_url: '',
+            image_url: req.file.location,
             description,
             safety_hazard,
             category,
