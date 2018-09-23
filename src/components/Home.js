@@ -1,5 +1,6 @@
 import React from 'react'
 import { List } from 'semantic-ui-react'
+import axios from 'axios';
 
 const ListExampleDivided = () => (
   <List divided relaxed>
@@ -27,4 +28,18 @@ const ListExampleDivided = () => (
   </List>
 )
 
-export default ListExampleDivided;
+export default class Home extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+
+
+
+  render() {
+    return (
+      <React.Fragment>
+        <ListExampleDivided />
+      </React.Fragment>
+    );
+  };
+};
