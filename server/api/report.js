@@ -57,7 +57,9 @@ module.exports = (knex) => {
   });
 
   reportApi.post('/new', upload.single('file'), (req, res) => {
-    let { location, description, safety_hazard, category, citizen_id, neighbourhood_id } = req.body;
+    let { description, safety_hazard, category, citizen_id, neighbourhood_id } = req.body;
+
+    console.log(req.body.location);
 
     if (!description || !category || !citizen_id || !neighbourhood_id) {
       return res.status(400).send({
@@ -68,8 +70,8 @@ module.exports = (knex) => {
     knex('reports')
         .returning('id')
         .insert({
-            latitude: location.coords.latitude,
-            longitude: location.coords.longitude,
+            latitude: "43.6598",
+            longitude: "79.3886",
             image_url: req.file.location,
             description,
             safety_hazard,
