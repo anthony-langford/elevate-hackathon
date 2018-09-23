@@ -57,38 +57,38 @@ module.exports = (knex) => {
   });
 
   reportApi.post('/new', upload.single('file'), (req, res) => {
-    let { latitude, longitude, description, safety_hazard, category, citizen_id, neighbourhood_id } = req.body;
+    // let { latitude, longitude, description, safety_hazard, category, citizen_id, neighbourhood_id } = req.body;
 
-    if (!latitude || !longitude || !description || !category || !citizen_id || !neighbourhood_id) {
-      return res.status(400).send({
-        message: 'Bad form data'
-      });
-    };
+    // if (!latitude || !longitude || !description || !category || !citizen_id || !neighbourhood_id) {
+    //   return res.status(400).send({
+    //     message: 'Bad form data'
+    //   });
+    // };
 
-    knex('reports')
-        .returning('id')
-        .insert({
-            latitude,
-            longitude,
-            image_url: req.file.location,
-            description,
-            safety_hazard,
-            category,
-            citizen_id,
-            neighbourhood_id
-        })
-        .then((report_id) => {
-            return res.status(200).send({
-                report_id,
-                message: 'Successfully added new report',
-            });
-        })
-        .catch((e) => {
-          console.log(JSON.stringify(e))
-            return res.status(500).send({
-                message: e
-              });
-        });
+    // knex('reports')
+    //     .returning('id')
+    //     .insert({
+    //         latitude,
+    //         longitude,
+    //         image_url: req.file.location,
+    //         description,
+    //         safety_hazard,
+    //         category,
+    //         citizen_id,
+    //         neighbourhood_id
+    //     })
+    //     .then((report_id) => {
+    //         return res.status(200).send({
+    //             report_id,
+    //             message: 'Successfully added new report',
+    //         });
+    //     })
+    //     .catch((e) => {
+    //       console.log(JSON.stringify(e))
+    //         return res.status(500).send({
+    //             message: e
+    //           });
+    //     });
   });
 
   reportApi.post('/upvote', (req, res) => {
