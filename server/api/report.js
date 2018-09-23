@@ -59,7 +59,7 @@ module.exports = (knex) => {
   reportApi.post('/new', upload.single('file'), (req, res) => {
     let { location, description, safety_hazard, category, citizen_id, neighbourhood_id } = req.body;
 
-    if (!location || !description || !category || !citizen_id || !neighbourhood_id) {
+    if (!description || !category || !citizen_id || !neighbourhood_id) {
       return res.status(400).send({
         message: 'Bad form data'
       });
@@ -68,8 +68,8 @@ module.exports = (knex) => {
     knex('reports')
         .returning('id')
         .insert({
-            latitude: location.latitude,
-            longitude: location.longitude,
+            latitude: location.coords.latitude,
+            longitude: location.coords.longitude,
             image_url: req.file.location,
             description,
             safety_hazard,
